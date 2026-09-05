@@ -11,6 +11,12 @@ header {
 
 nav {
     background-color: lightgray;
+    display: inline-block;
+    width: 80%;
+}
+
+nav img {
+    width: 10%;
 }
 
 main {
@@ -22,10 +28,10 @@ footer {
     background-color: lightblue;
 }
 
-li {
+/* li {
     display: inline-block;
     width: 150px;
-}
+} */
 
 h1 {
     text-align: center;
@@ -39,4 +45,22 @@ p {
 
 a {
     color: darkblue;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: space-around;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.grid img {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
