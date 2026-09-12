@@ -4,34 +4,39 @@ body {
     font-size: 150%;
     background-color: whitesmoke;
     color: darkslategray;
+    margin: 0;
 }
 
 header {
     background-color: lightblue;
+    padding-bottom: 20px;
+    text-align: center;
 }
 
+/* Navigation */
 nav {
     background-color: lightgray;
     display: inline-block;
     width: 80%;
 }
 
-/* Navigation dùng FLEX */
 nav ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
     list-style-type: none;
     padding: 15px;
+    margin: 0;
 }
 
 nav a {
     color: darkblue;
     text-decoration: none;
+    font-weight: bold;
     padding: 10px;
 }
 
-/* Hover cho navigation */
+/* Hover cho liên kết */
 nav a:hover {
     background-color: white;
     text-decoration: underline;
@@ -46,11 +51,14 @@ nav img {
 main {
     background-color: whitesmoke;
     font-size: 18px;
+    padding: 20px;
+    min-height: 400px;
 }
 
 footer {
     background-color: lightblue;
     padding: 20px;
+    text-align: center;
 }
 
 h1 {
@@ -83,7 +91,7 @@ a {
     text-decoration: none;
 }
 
-/* Chỉ hiện khi được focus */
+/* Chỉ hiển thị khi link được focus */
 .skip-link:focus {
     top: 10px;
 }
@@ -97,6 +105,7 @@ img {
     border: 3px solid darkblue;
     padding: 8px;
     border-radius: 15px;
+    box-sizing: border-box;
 }
 
 
@@ -118,13 +127,17 @@ img {
     width: 100%;
 }
 
-/* Hover hình ảnh */
+/* Hiệu ứng hover */
 .grid img:hover {
     transform: scale(1.05);
     transition: 0.3s;
 }
 
-/* nth-child */
+
+/* =========================
+   NTH-CHILD
+   ========================= */
+
 .grid img:nth-child(even) {
     border-radius: 30px 5px;
 }
@@ -146,9 +159,14 @@ img {
     width: 200px;
 }
 
-/* Hover hình ảnh trong flex */
+/* Hiệu ứng hover */
 .flex img:hover {
     transform: rotate(2deg) scale(1.05);
     transition: 0.3s;
 }
+
+
+/* =========================
+   FOOTER LINK
+   ======================
 ```
