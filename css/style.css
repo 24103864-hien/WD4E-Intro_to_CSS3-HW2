@@ -1,3 +1,4 @@
+```css
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 150%;
@@ -15,6 +16,29 @@ nav {
     width: 80%;
 }
 
+/* Navigation dùng FLEX */
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+    padding: 15px;
+}
+
+nav a {
+    color: darkblue;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* Hover cho navigation */
+nav a:hover {
+    background-color: white;
+    text-decoration: underline;
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
 nav img {
     width: 10%;
 }
@@ -26,12 +50,8 @@ main {
 
 footer {
     background-color: lightblue;
+    padding: 20px;
 }
-
-/* li {
-    display: inline-block;
-    width: 150px;
-} */
 
 h1 {
     text-align: center;
@@ -47,20 +67,88 @@ a {
     color: darkblue;
 }
 
+
+/* =========================
+   SKIP LINK
+   ========================= */
+
+.skip-link {
+    position: absolute;
+    top: -50px;
+    left: 10px;
+    background-color: white;
+    color: darkblue;
+    padding: 10px;
+    border: 2px solid darkblue;
+    text-decoration: none;
+}
+
+/* Chỉ hiện khi được focus */
+.skip-link:focus {
+    top: 10px;
+}
+
+
+/* =========================
+   HÌNH ẢNH - BOX MODEL
+   ========================= */
+
+img {
+    border: 3px solid darkblue;
+    padding: 8px;
+    border-radius: 15px;
+}
+
+
+/* =========================
+   GRID
+   ========================= */
+
 .grid {
     display: grid;
     grid-template-columns: 40% 40%;
     justify-content: space-around;
     align-items: center;
     row-gap: 20px;
+    column-gap: 20px;
+    padding: 20px;
 }
 
 .grid img {
     width: 100%;
 }
 
+/* Hover hình ảnh */
+.grid img:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+/* nth-child */
+.grid img:nth-child(even) {
+    border-radius: 30px 5px;
+}
+
+
+/* =========================
+   FLEX
+   ========================= */
+
 .flex {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
 }
+
+.flex img {
+    width: 200px;
+}
+
+/* Hover hình ảnh trong flex */
+.flex img:hover {
+    transform: rotate(2deg) scale(1.05);
+    transition: 0.3s;
+}
+```
