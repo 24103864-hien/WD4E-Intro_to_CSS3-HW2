@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -25,13 +26,13 @@
     <h1>Khám phá Việt Nam</h1>
 
     <p class="intro">
-        Việt Nam là một đất nước xinh đẹp với nền văn hóa lâu đời,
-        thiên nhiên đa dạng và nhiều điểm đến hấp dẫn.
+      Việt Nam là một đất nước xinh đẹp với nền văn hóa lâu đời,
+      thiên nhiên đa dạng và nhiều điểm đến hấp dẫn.
     </p>
 
     <p class="intro">
-        Hãy cùng khám phá những thành phố nổi tiếng và những cảnh đẹp
-        thiên nhiên tuyệt vời từ Bắc vào Nam.
+      Hãy cùng khám phá những thành phố nổi tiếng và những cảnh đẹp
+      thiên nhiên tuyệt vời từ Bắc vào Nam.
     </p>
   </header>
 
@@ -52,40 +53,114 @@
       thú vị cho du khách.
     </p>
 
+    <!-- Khu vực hiển thị ảnh -->
+    <div id="image">
+      Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.
+    </div>
+
+    <!-- Các ảnh xem trước -->
     <section class="grid">
-      <img src="images/halong_bay.jpg"
+
+      <img class="preview"
+        src="images/halong_bay.jpg"
         alt="Beautiful limestone islands in Ha Long Bay">
 
-      <img src="images/rice_fields.jpg"
+      <img class="preview"
+        src="images/rice_fields.jpg"
         alt="Green rice fields in the countryside">
 
-      <img src="images/vietnam_street.jpg"
+      <img class="preview"
+        src="images/vietnam_street.jpg"
         alt="Busy street in a Vietnamese city">
 
-      <img src="images/beach.jpg"
+      <img class="preview"
+        src="images/beach.jpg"
         alt="Sunny beach with blue water">
+
     </section>
 
   </main>
 
   <footer>
+
     <h2>Khám phá Việt Nam</h2>
 
     <p>
-        Khám phá vẻ đẹp, văn hóa và những địa điểm tuyệt vời của Việt Nam.
+      Khám phá vẻ đẹp, văn hóa và những địa điểm tuyệt vời của Việt Nam.
     </p>
 
     <div class="footer-links">
-        <a href="index.html">Trang chủ</a>
-        <a href="cities.html">Các thành phố</a>
-        <a href="nature.html">Thiên nhiên &amp; Công viên</a>
+      <a href="index.html">Trang chủ</a>
+      <a href="cities.html">Các thành phố</a>
+      <a href="nature.html">Thiên nhiên &amp; Công viên</a>
     </div>
 
     <p class="copyright">
-        &copy; 2026 Khám phá Việt Nam. Bản quyền thuộc về website.
+      &copy; 2026 Khám phá Việt Nam. Bản quyền thuộc về website.
     </p>
+
   </footer>
+
+
+  <!-- JavaScript -->
+
+  <script>
+
+    // Hàm update được gọi khi di chuột vào hình ảnh
+    function update(previewPic) {
+
+      // Kiểm tra xem sự kiện có được kích hoạt hay không
+      console.log("Update đã được kích hoạt!");
+
+      // In alt và source của hình ảnh ra Console
+      console.log("Alt:", previewPic.alt);
+      console.log("Source:", previewPic.src);
+
+      // Thay đổi nội dung văn bản của #image
+      document.querySelector("#image").innerHTML = previewPic.alt;
+
+      // Thay đổi hình nền của #image
+      document.querySelector("#image").style.backgroundImage =
+        "url('" + previewPic.src + "')";
+    }
+
+
+    // Hàm undo được gọi khi di chuột ra khỏi hình ảnh
+    function undo() {
+
+      // Đưa hình nền về trạng thái ban đầu
+      document.querySelector("#image").style.backgroundImage = "url('')";
+
+      // Đưa nội dung văn bản về trạng thái ban đầu
+      document.querySelector("#image").innerHTML =
+        "Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.";
+
+      console.log("Undo đã được kích hoạt!");
+    }
+
+
+    // Lấy tất cả các hình ảnh có class preview
+    let images = document.querySelectorAll(".preview");
+
+
+    // Gắn sự kiện cho từng hình ảnh
+    for (let i = 0; i < images.length; i++) {
+
+      // Khi di chuột vào hình ảnh
+      images[i].onmouseover = function() {
+        update(this);
+      };
+
+      // Khi di chuột ra khỏi hình ảnh
+      images[i].onmouseout = function() {
+        undo();
+      };
+
+    }
+
+  </script>
 
 </body>
 
 </html>
+```
