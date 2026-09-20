@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -11,6 +12,7 @@
 <body>
 
   <header>
+
     <nav>
       <ul>
         <li><a href="index.html">Trang chủ</a></li>
@@ -25,81 +27,164 @@
     <h1>Những thành phố đẹp ở Việt Nam</h1>
 
     <p class="intro">
-        Mỗi thành phố ở Việt Nam đều mang một vẻ đẹp riêng,
-        từ những con phố cổ kính đến những đô thị hiện đại và năng động.
+      Mỗi thành phố ở Việt Nam đều mang một vẻ đẹp riêng,
+      từ những con phố cổ kính đến những đô thị hiện đại và năng động.
     </p>
 
     <p class="intro">
-        Cùng khám phá những thành phố nổi tiếng với văn hóa,
-        ẩm thực và những địa danh đặc sắc.
+      Cùng khám phá những thành phố nổi tiếng với văn hóa,
+      ẩm thực và những địa danh đặc sắc.
     </p>
+
   </header>
+
 
   <a class="skip-link" href="#main-content">
     Chuyển đến Nội dung chính
   </a>
 
+
   <main id="main-content">
 
-  <p>
-    Việt Nam có nhiều thành phố xinh đẹp và thú vị. Mỗi thành phố
-    đều có nét văn hóa, ẩm thực, kiến trúc và không khí riêng.
-  </p>
+    <p>
+      Việt Nam có nhiều thành phố xinh đẹp và thú vị. Mỗi thành phố
+      đều có nét văn hóa, ẩm thực, kiến trúc và không khí riêng.
+    </p>
 
+
+    <!-- Khu vực hiển thị ảnh -->
+    <div id="image">
+      Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.
+    </div>
+
+
+    <!-- Danh sách hình ảnh -->
     <div class="grid">
 
-      <img src="images/hanoi1.jpg"
+      <img class="preview"
+        src="images/hanoi1.jpg"
         alt="A street in Hanoi">
 
-      <img src="images/hochiminh.jpg"
+      <img class="preview"
+        src="images/hochiminh.jpg"
         alt="City view of Ho Chi Minh City">
 
-      <img src="images/danang.jpg"
+      <img class="preview"
+        src="images/danang.jpg"
         alt="Beautiful view of Da Nang">
 
-      <img src="images/hoian.jpg"
+      <img class="preview"
+        src="images/hoian.jpg"
         alt="Colorful streets of Hoi An">
 
-      <img src="images/hue.jpg"
+      <img class="preview"
+        src="images/hue.jpg"
         alt="Historical architecture in Hue">
 
-      <img src="images/nhatrang.jpg"
+      <img class="preview"
+        src="images/nhatrang.jpg"
         alt="Beach in Nha Trang">
 
-      <img src="images/haiphong.jpg"
+      <img class="preview"
+        src="images/haiphong.jpg"
         alt="A street in Hai Phong">
 
-      <img src="images/dalat.jpg"
+      <img class="preview"
+        src="images/dalat.jpg"
         alt="Beautiful landscape of Da Lat">
 
-      <img src="images/sapa.jpg"
+      <img class="preview"
+        src="images/sapa.jpg"
         alt="Mountains and rice terraces in Sapa">
 
-      <img src="images/cantho.jpg"
+      <img class="preview"
+        src="images/cantho.jpg"
         alt="River scenery in Can Tho">
 
     </div>
 
   </main>
 
+
   <footer>
+
     <h2>Khám phá Việt Nam</h2>
 
     <p>
-        Khám phá vẻ đẹp và nét đặc trưng của các thành phố Việt Nam.
+      Khám phá vẻ đẹp và nét đặc trưng của các thành phố Việt Nam.
     </p>
 
     <div class="footer-links">
-        <a href="index.html">Trang chủ</a>
-        <a href="cities.html">Các thành phố</a>
-        <a href="nature.html">Thiên nhiên &amp; Công viên</a>
+      <a href="index.html">Trang chủ</a>
+      <a href="cities.html">Các thành phố</a>
+      <a href="nature.html">Thiên nhiên &amp; Công viên</a>
     </div>
 
     <p class="copyright">
-        &copy; 2026 Khám phá Việt Nam. Bản quyền thuộc về website.
+      &copy; 2026 Khám phá Việt Nam. Bản quyền thuộc về website.
     </p>
+
   </footer>
+
+
+  <!-- JavaScript -->
+
+  <script>
+
+    // Hàm update khi di chuột vào hình ảnh
+    function update(previewPic) {
+
+      console.log("Update đã được kích hoạt!");
+
+      // Hiển thị thông tin alt và source trong Console
+      console.log("Alt:", previewPic.alt);
+      console.log("Source:", previewPic.src);
+
+      // Thay đổi văn bản của vùng #image
+      document.querySelector("#image").innerHTML = previewPic.alt;
+
+      // Thay đổi hình nền của vùng #image
+      document.querySelector("#image").style.backgroundImage =
+        "url('" + previewPic.src + "')";
+    }
+
+
+    // Hàm undo khi di chuột ra khỏi hình ảnh
+    function undo() {
+
+      // Đưa hình nền về trạng thái ban đầu
+      document.querySelector("#image").style.backgroundImage = "url('')";
+
+      // Đưa văn bản về trạng thái ban đầu
+      document.querySelector("#image").innerHTML =
+        "Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.";
+
+      console.log("Undo đã được kích hoạt!");
+    }
+
+
+    // Lấy tất cả hình ảnh có class preview
+    let images = document.querySelectorAll(".preview");
+
+
+    // Gắn sự kiện cho từng hình ảnh
+    for (let i = 0; i < images.length; i++) {
+
+      // Khi di chuột vào ảnh
+      images[i].onmouseover = function() {
+        update(this);
+      };
+
+      // Khi di chuột ra khỏi ảnh
+      images[i].onmouseout = function() {
+        undo();
+      };
+
+    }
+
+  </script>
 
 </body>
 
 </html>
+```
