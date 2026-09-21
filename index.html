@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -9,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="addTabFocus()">
 
   <header>
     <nav>
@@ -77,6 +76,14 @@
         src="images/beach.jpg"
         alt="Sunny beach with blue water">
 
+      <img class="preview"
+        src="images/hoi_an.jpg"
+        alt="Colorful lanterns in Hoi An">
+
+      <img class="preview"
+        src="images/sapa.jpg"
+        alt="Mountain landscape in Sapa">
+
     </section>
 
   </main>
@@ -106,32 +113,25 @@
 
   <script>
 
-    // Hàm update được gọi khi di chuột vào hình ảnh
+    // Hàm update được gọi khi di chuột vào hoặc focus vào hình ảnh
     function update(previewPic) {
 
-      // Kiểm tra xem sự kiện có được kích hoạt hay không
       console.log("Update đã được kích hoạt!");
-
-      // In alt và source của hình ảnh ra Console
       console.log("Alt:", previewPic.alt);
       console.log("Source:", previewPic.src);
 
-      // Thay đổi nội dung văn bản của #image
       document.querySelector("#image").innerHTML = previewPic.alt;
 
-      // Thay đổi hình nền của #image
       document.querySelector("#image").style.backgroundImage =
         "url('" + previewPic.src + "')";
     }
 
 
-    // Hàm undo được gọi khi di chuột ra khỏi hình ảnh
+    // Hàm undo được gọi khi di chuột ra hoặc mất focus
     function undo() {
 
-      // Đưa hình nền về trạng thái ban đầu
       document.querySelector("#image").style.backgroundImage = "url('')";
 
-      // Đưa nội dung văn bản về trạng thái ban đầu
       document.querySelector("#image").innerHTML =
         "Di chuột qua một hình ảnh bên dưới để hiển thị ở đây.";
 
@@ -152,10 +152,35 @@
       };
 
       // Khi di chuột ra khỏi hình ảnh
-      images[i].onmouseout = function() {
+      images[i].onmouseleave = function() {
         undo();
       };
 
+      // Khi focus vào hình ảnh bằng bàn phím
+      images[i].onfocus = function() {
+        update(this);
+      };
+
+      // Khi mất focus
+      images[i].onblur = function() {
+        undo();
+      };
+
+    }
+
+
+    // Hàm được gọi khi trang web tải xong
+    function addTabFocus() {
+
+      console.log("addTabFocus đã được kích hoạt!");
+
+      let images = document.querySelectorAll(".preview");
+
+      for (let i = 0; i < images.length; i++) {
+
+        images[i].setAttribute("tabindex", "0");
+
+      }
     }
 
   </script>
@@ -163,4 +188,3 @@
 </body>
 
 </html>
-```
