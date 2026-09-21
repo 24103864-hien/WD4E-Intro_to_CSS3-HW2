@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -9,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="addTabFocus()">
 
   <header>
 
@@ -131,7 +130,7 @@
 
   <script>
 
-    // Hàm update khi di chuột vào hình ảnh
+    // Hàm update khi di chuột vào hoặc focus vào hình ảnh
     function update(previewPic) {
 
       console.log("Update đã được kích hoạt!");
@@ -149,7 +148,7 @@
     }
 
 
-    // Hàm undo khi di chuột ra khỏi hình ảnh
+    // Hàm undo khi di chuột ra hoặc mất focus
     function undo() {
 
       // Đưa hình nền về trạng thái ban đầu
@@ -176,10 +175,37 @@
       };
 
       // Khi di chuột ra khỏi ảnh
-      images[i].onmouseout = function() {
+      images[i].onmouseleave = function() {
         undo();
       };
 
+      // Khi focus vào ảnh bằng bàn phím
+      images[i].onfocus = function() {
+        update(this);
+      };
+
+      // Khi mất focus
+      images[i].onblur = function() {
+        undo();
+      };
+
+    }
+
+
+    // Hàm được gọi khi trang web tải xong
+    function addTabFocus() {
+
+      console.log("addTabFocus đã được kích hoạt!");
+
+      // Lấy tất cả hình ảnh
+      let images = document.querySelectorAll(".preview");
+
+      // Thêm tabindex cho từng hình ảnh
+      for (let i = 0; i < images.length; i++) {
+
+        images[i].setAttribute("tabindex", "0");
+
+      }
     }
 
   </script>
@@ -187,4 +213,3 @@
 </body>
 
 </html>
-```
